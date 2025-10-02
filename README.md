@@ -18,7 +18,6 @@ Consequence of a slight infatuation with the glorious Nord palette.
 | Original                      | Nordified                           |
 |-------------------------------|-------------------------------------|
 | ![Original](examples/car.png) | ![Recolored](examples/car-nord.png) |
-| ![Original](examples/gru.png) | ![Recolored](examples/gru-nord.png) |
 
 # Requirements
 
