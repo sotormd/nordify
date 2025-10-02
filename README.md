@@ -1,0 +1,79 @@
+# nordify
+
+Recolor images using the Nord palette & more.
+
+Consequence of a slight infatuation with the glorious Nord palette.
+
+# Features
+
+- [X] Palette based coloring.
+- [X] Supports .PNG images.
+- [X] Uses CIELAB color distance instead of raw RGB distance for better perceptual accuracy.
+- [X] Choose from several available palettes.
+- [ ] Implement Floyd-Steinberg dithering.
+- [ ] Support more image formats.
+
+# Showcase
+
+| Original                      | Nordified                           |
+|-------------------------------|-------------------------------------|
+| ![Original](examples/car.png) | ![Recolored](examples/car-nord.png) |
+| ![Original](examples/gru.png) | ![Recolored](examples/gru-nord.png) |
+
+# Requirements
+
+This app is packaged using [Nix](https://nixos.org/download).
+
+# Usage
+
+Run directly
+
+```
+$ nix run github:sotormd/nordify -- input.png output.png
+```
+
+Or, clone and run
+
+```
+$ git clone https://github.com/sotormd/nordify
+$ cd nordify
+$ nix run . -- input.png output.png
+```
+
+## Build with Go
+
+1. Clone the repository
+    ```
+    $ git clone https://github.com/sotormd/nordify
+    $ cd nordify
+    ```
+
+2. Build and run
+    ```
+    $ go build ./cmd/nordify
+    $ ./nordify input.png output.png
+    ```
+
+# Palettes
+
+Palettes are JSON arrays in `palettes/<name>.json`
+
+The following are included by default:
+- nord
+- gruvbox
+- cattpuccin-mocha
+- everforest
+- dracula
+- tokyo-night
+- rose-pine
+- solarized-dark
+- monokai
+
+The palette to use can be specified with the `-p` flag.
+
+```
+$ nix run . -- -p everforest input.png output.png
+```
+
+The default palette is `nord`.
+
