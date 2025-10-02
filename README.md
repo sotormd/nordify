@@ -10,14 +10,16 @@ Consequence of a slight infatuation with the glorious Nord palette.
 - [X] Supports .PNG images.
 - [X] Uses CIELAB color distance instead of raw RGB distance for better perceptual accuracy.
 - [X] Choose from several available palettes.
+- [X] Uses goroutines for better performance.
 - [ ] Implement Floyd-Steinberg dithering.
 - [ ] Support more image formats.
 
 # Showcase
 
-| Original                      | Nordified                           |
-|-------------------------------|-------------------------------------|
-| ![Original](examples/car.png) | ![Recolored](examples/car-nord.png) |
+| Original                         | Nordified                              |
+|----------------------------------|----------------------------------------|
+| ![Original](examples/car.png)    | ![Recolored](examples/car-nord.png)    |
+| ![Original](examples/record.png) | ![Recolored](examples/record-nord.png) |
 
 # Requirements
 
