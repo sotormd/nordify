@@ -11,10 +11,10 @@
 
       packages.x86_64-linux.default = pkgs.buildGoModule {
         pname = "nordify";
-	version = "0.1.0";
+        version = "0.1.0";
         src = ./.;
         subPackages = [ "./cmd/nordify" ];
-	vendorHash = null;
+        vendorHash = null;
       };
 
       apps.x86_64-linux.default = {
