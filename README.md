@@ -27,19 +27,18 @@ This app is packaged using [Nix](https://nixos.org/download).
 
 # Usage
 
-Run directly
+## Run with Nix
 
-```
-$ nix run github:sotormd/nordify -- input.png output.png
-```
+1. Clone the repository
+    ```
+    $ git clone https://github.com/sotormd/nordify
+    $ cd nordify
+    ```
 
-Or, clone and run
-
-```
-$ git clone https://github.com/sotormd/nordify
-$ cd nordify
-$ nix run . -- input.png output.png
-```
+2. Run
+    ```
+    $ nix run . -- input.png output.png
+    ```
 
 ## Build with Go
 
