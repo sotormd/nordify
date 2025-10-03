@@ -16,10 +16,12 @@ Consequence of a slight infatuation with the glorious Nord palette.
 
 # Showcase
 
-| Original                         | Nordified                              |
-|----------------------------------|----------------------------------------|
-| ![Original](examples/car.png)    | ![Recolored](examples/car-nord.png)    |
-| ![Original](examples/record.png) | ![Recolored](examples/record-nord.png) |
+| Original                              | Nordified                                   |
+|---------------------------------------|---------------------------------------------|
+| ![Original](examples/car.png)         | ![Recolored](examples/car-nord.png)         |
+| ![Original](examples/building.png)    | ![Recolored](examples/building-nord.png)    |
+| ![Original](examples/night.png)       | ![Recolored](examples/night-nord.png)       |
+| ![Original](examples/record.png)      | ![Recolored](examples/record-nord.png)      |
 
 # Requirements
 
