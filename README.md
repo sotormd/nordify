@@ -31,16 +31,9 @@ This app is packaged using [Nix](https://nixos.org/download).
 
 ## Run with Nix
 
-1. Clone the repository
-    ```
-    $ git clone https://github.com/sotormd/nordify
-    $ cd nordify
-    ```
-
-2. Run
-    ```
-    $ nix run . -- input.png output.png
-    ```
+```
+$ nix run github:sotormd/nordify -- input.png output.png
+```
 
 ## Build with Go
 
