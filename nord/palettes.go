@@ -45,9 +45,15 @@ func (e InvalidHexError) Error() string {
 	return fmt.Sprintf("invalid hex code %s", e.Hex)
 }
 
-func constructPalettePath(palette string) string {
-	path := filepath.Join("palettes", fmt.Sprintf("%s.json", palette))
-	return path
+func constructPalettePath(palette string) (string, error) {
+	exePath, err := os.Executable()
+	if err != nil {
+		return "", err
+	}
+
+	exeDir := filepath.Dir(exePath)
+	path := filepath.Join(exeDir, "palettes", fmt.Sprintf("%s.json", palette))
+	return path, nil
 }
 
 func fileExists(path string) bool {
@@ -59,10 +65,14 @@ func fileExists(path string) bool {
 }
 
 func paletteExists(palette string) bool {
-	path := constructPalettePath(palette)
+	path, err := constructPalettePath(palette)
+	if err != nil {
+		return false
+	}
 	if fileExists(path) {
 		return true
 	}
+	println(path)
 	return false
 }
 
@@ -97,9 +107,12 @@ func hexToRGB(hex string) (RGB, error) {
 func readPalette(palette string) ([]string, error) {
 	var rawPalette []string
 
-	path := constructPalettePath(palette)
-	data, err := os.ReadFile(path)
+	path, err := constructPalettePath(palette)
+	if err != nil {
+		return nil, err
+	}
 
+	data, err := os.ReadFile(path)
 	if err != nil {
 		return nil, err
 	}

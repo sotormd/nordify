@@ -15,6 +15,10 @@
         src = ./.;
         subPackages = [ "./cmd/nordify" ];
         vendorHash = null;
+        postInstall = ''
+          mkdir -p $out/bin/palettes
+          cp -r ${./palettes}/* $out/bin/palettes/
+        '';
       };
 
       apps.x86_64-linux.default = {

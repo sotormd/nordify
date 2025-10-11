@@ -30,9 +30,9 @@ func main() {
 	var phx nord.InvalidHexError
 	if err != nil {
 		if errors.As(err, &pnf) {
-			fmt.Fprintf(os.Stderr, "Invalid palette %s", pnf.Name)
+			fmt.Fprintf(os.Stderr, "Unable to find palette %s", pnf.Name)
 		} else if errors.As(err, &prd) {
-			fmt.Fprintf(os.Stderr, "Unable to read palette file %s", prd.Name)
+			fmt.Fprintf(os.Stderr, "Unable to read palette %s", prd.Name)
 		} else if errors.As(err, &phx) {
 			fmt.Fprintf(os.Stderr, "Invalid hex code %s", phx.Hex)
 		}
@@ -47,7 +47,7 @@ func main() {
 	var iex nord.ImageExistsError
 	if err != nil {
 		if errors.As(err, &inf) {
-			fmt.Fprintf(os.Stderr, "Image %s not found", inf.Name)
+			fmt.Fprintf(os.Stderr, "Unable to find image %s", inf.Name)
 		} else if errors.As(err, &ird) {
 			fmt.Fprintf(os.Stderr, "Unable to read image %s", ird.Name)
 		} else if errors.As(err, &ict) {
