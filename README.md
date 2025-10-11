@@ -67,7 +67,7 @@ The following are included by default:
 The palette to use can be specified with the `-p` flag.
 
 ```
-$ nix run . -- -p everforest input.png output.png
+$ nix run github:sotormd/nordify -- -p everforest input.png output.png
 ```
 
 The default palette is `nord`.
