@@ -31,20 +31,20 @@ This app is packaged using [Nix](https://nixos.org/download).
 
 ## Run with Nix
 
-```
+```console
 $ nix run github:sotormd/nordify -- input.png output.png
 ```
 
 ## Build with Go
 
 1. Clone the repository
-    ```
+    ```console
     $ git clone https://github.com/sotormd/nordify
     $ cd nordify
     ```
 
 2. Build and run
-    ```
+    ```console
     $ go build ./cmd/nordify
     $ ./nordify input.png output.png
     ```
@@ -66,7 +66,7 @@ The following are included by default:
 
 The palette to use can be specified with the `-p` flag.
 
-```
+```console
 $ nix run github:sotormd/nordify -- -p everforest input.png output.png
 ```
 
