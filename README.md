@@ -6,22 +6,23 @@ Consequence of a slight infatuation with the glorious Nord palette.
 
 # Features
 
-- [X] Palette based coloring.
-- [X] Supports .PNG images.
-- [X] Uses CIELAB color distance instead of raw RGB distance for better perceptual accuracy.
-- [X] Choose from several available palettes.
-- [X] Uses goroutines for better performance.
+- [x] Palette based coloring.
+- [x] Supports .PNG images.
+- [x] Uses CIELAB color distance instead of raw RGB distance for better
+      perceptual accuracy.
+- [x] Choose from several available palettes.
+- [x] Uses goroutines for better performance.
 - [ ] Implement Floyd-Steinberg dithering.
 - [ ] Support more image formats.
 
 # Showcase
 
-| Original                              | Nordified                                   |
-|---------------------------------------|---------------------------------------------|
-| ![Original](examples/car.png)         | ![Recolored](examples/car-nord.png)         |
-| ![Original](examples/building.png)    | ![Recolored](examples/building-nord.png)    |
-| ![Original](examples/night.png)       | ![Recolored](examples/night-nord.png)       |
-| ![Original](examples/record.png)      | ![Recolored](examples/record-nord.png)      |
+| Original                           | Nordified                                |
+| ---------------------------------- | ---------------------------------------- |
+| ![Original](examples/car.png)      | ![Recolored](examples/car-nord.png)      |
+| ![Original](examples/building.png) | ![Recolored](examples/building-nord.png) |
+| ![Original](examples/night.png)    | ![Recolored](examples/night-nord.png)    |
+| ![Original](examples/record.png)   | ![Recolored](examples/record-nord.png)   |
 
 # Requirements
 
@@ -31,32 +32,33 @@ This app is packaged using [Nix](https://nixos.org/download).
 
 ## Run with Nix
 
-```console
-$ nix run github:sotormd/nordify -- input.png output.png
+```bash
+nix run github:sotormd/nordify -- input.png output.png
 ```
 
 ## Build with Go
 
 1. Clone the repository
-    ```console
-    $ git clone https://github.com/sotormd/nordify
-    $ cd nordify
-    ```
+   ```bash
+   git clone https://github.com/sotormd/nordify
+   cd nordify
+   ```
 
 2. Build and run
-    ```console
-    $ go build ./cmd/nordify
-    $ ./nordify input.png output.png
-    ```
+   ```bash
+   go build ./cmd/nordify
+   ./nordify input.png output.png
+   ```
 
 # Palettes
 
-Palettes are JSON arrays in `palettes/<name>.json`
+Palettes are JSON arrays of hex color codes
 
 The following are included by default:
+
 - nord
 - gruvbox
-- cattpuccin-mocha
+- catppuccin-mocha
 - everforest
 - dracula
 - tokyo-night
@@ -66,9 +68,21 @@ The following are included by default:
 
 The palette to use can be specified with the `-p` flag.
 
-```console
-$ nix run github:sotormd/nordify -- -p everforest input.png output.png
+```bash
+nix run github:sotormd/nordify -- -p everforest input.png output.png
 ```
 
 The default palette is `nord`.
 
+## Using your own palettes
+
+By default, `nordify` looks for palettes in `$HOME/.config/nordify/palettes/`.
+
+You can pass your own directory with the `-d` flag.
+
+```bash
+nix run github:sotormd/nordify -- -d /path/to/my/palettes input.png output.png
+```
+
+If this directory doesn't exist, `nordify` will create it and populate it with
+the default palettes.

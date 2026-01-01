@@ -45,15 +45,9 @@ func (e InvalidHexError) Error() string {
 	return fmt.Sprintf("invalid hex code %s", e.Hex)
 }
 
-func constructPalettePath(palette string) (string, error) {
-	exePath, err := os.Executable()
-	if err != nil {
-		return "", err
-	}
-
-	exeDir := filepath.Dir(exePath)
-	path := filepath.Join(exeDir, "palettes", fmt.Sprintf("%s.json", palette))
-	return path, nil
+func constructPalettePath(dir string, palette string) string {
+	path := filepath.Join(dir, fmt.Sprintf("%s.json", palette))
+	return path
 }
 
 func fileExists(path string) bool {
@@ -64,11 +58,8 @@ func fileExists(path string) bool {
 	return true
 }
 
-func paletteExists(palette string) bool {
-	path, err := constructPalettePath(palette)
-	if err != nil {
-		return false
-	}
+func paletteExists(dir string, palette string) bool {
+	path := constructPalettePath(dir, palette)
 	if fileExists(path) {
 		return true
 	}
@@ -104,13 +95,10 @@ func hexToRGB(hex string) (RGB, error) {
 	return color, nil
 }
 
-func readPalette(palette string) ([]string, error) {
+func readPalette(dir string, palette string) ([]string, error) {
 	var rawPalette []string
 
-	path, err := constructPalettePath(palette)
-	if err != nil {
-		return nil, err
-	}
+	path := constructPalettePath(dir, palette)
 
 	data, err := os.ReadFile(path)
 	if err != nil {
@@ -122,12 +110,12 @@ func readPalette(palette string) ([]string, error) {
 	return rawPalette, nil
 }
 
-func GetPalette(palette string) (Palette, error) {
-	if !paletteExists(palette) {
+func GetPalette(dir string, palette string) (Palette, error) {
+	if !paletteExists(dir, palette) {
 		return nil, PaletteNotFoundError{Name: palette}
 	}
 
-	rawPalette, err := readPalette(palette)
+	rawPalette, err := readPalette(dir, palette)
 
 	if err != nil {
 		return nil, PaletteReadError{Name: palette}
